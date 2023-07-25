@@ -12,4 +12,3 @@ function foo(){
     return{ age:10, nick:'바보'};
 }
 console.log(foo());
-
