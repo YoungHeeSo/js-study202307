@@ -11,16 +11,36 @@
 // 난이도는 상, 중, 하 난이도가 존재하며 
 // 난이도별 입력 횟수제한이 다르다.
 
+//난이도 상수
+const HIGH=1;
+const MIDDLE=2;
+const LOW=3;
+
+//초기 난이도 설정 선택창 띄우기
+let level = +prompt('난이도를 선택하세요!\n# [1. 상(3번의 기회) | 2. 중(6번의 기회) | 3. 하(10번의 기회)]');
+
+//초기 카운트 수
+let initCount;
+
+if(level===HIGH){
+    initCount=3;
+}else if(level===MIDDLE){
+    initCount=6;    
+}else if(level===LOW){
+    initCount=10;    
+}else{
+    alert(`난이도 상으로 자동 시작합니다~`);
+    initCount=3;
+}
+
+//카운트다운 변수
+let countDown = initCount;
+
 //실제로 정답으로 사용할 랜덤정수 만들기
 let secret =  Math.floor(Math.random()*100)+1
 
 // 입력 최소, 최대값
 let min=1, max=100;
-
-//초기 카운트 수
-let initCount=5;
-//카운트다운 변수
-let countDown = initCount;
 
 while(true){
 
@@ -34,6 +54,7 @@ while(true){
         continue;
     }
     
+    //카운트 감소
     countDown--;
     
     //업 다운 판단
@@ -52,6 +73,7 @@ while(true){
     //추가 게임 종료 조건
     if(countdown === 0){
         alert(`틀렸어요 정답은 ${secret}입니다.`);
+        break;
     }else{
         alert(`${countDown}번의 기회가 남았습니다`);
     }
