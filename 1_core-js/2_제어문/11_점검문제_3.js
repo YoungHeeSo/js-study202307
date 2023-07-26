@@ -2,6 +2,8 @@
 let qNum=1; //문제 넘버링
 
 //정답, 오답 개수
+let correctCount = 0;
+let wrongCount = 0;
 
 while(true){
     //랜덤 정수 2개를 생성
@@ -18,10 +20,15 @@ while(true){
 
     //정답확인
     if(userAnswer === firstNumber+secondNumber){
-        alert(`정답!`);
-    }else{ alert(`오답!`); }
+        alert(`정답!`); 
+        correctCount++;
+    }else{ 
+        alert(`오답!`); 
+        wrongCount++;
+    }
 
-}
+}// end while
+alert(`정답 횟수: ${correctCount}회, 오답 횟수: ${wrongCount}회`);
 
 
 
