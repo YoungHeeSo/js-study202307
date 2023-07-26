@@ -8,7 +8,6 @@ let wrongCount = 0;
 let maxNumber;
 
 while(true){
-
     let message = `~~~~~~~~ 난이도를 설정합니다 ~~~~~~~~~~~~
     [1. 상 (1~100) | 2. 중 (1~50) | 3. 하 (1~20) ]`;
     let level = +prompt(message);
@@ -35,7 +34,7 @@ while(true){
     let secondNumber = Math.floor(Math.random()*maxNumber)+1;
     
     //연산자를 만들 랜덤 정수 생성
-    let markNum = Math.floor(Math.random*3)+1
+    let markNum = Math.floor(Math.random()*3);
     let mark;
 
     //실제 정답
@@ -47,7 +46,7 @@ while(true){
     }
     else if(markNum===1){
         if(firstNumber === secondNumber) continue;
-        else if(firstNumber<secondNumber){
+        else if(firstNumber < secondNumber){
             let t = firstNumber;
             firstNumber = secondNumber;
             secondNumber = t;

@@ -71,7 +71,7 @@ while(true){
     }
 
     //추가 게임 종료 조건
-    if(countdown === 0){
+    if(countDown === 0){
         alert(`틀렸어요 정답은 ${secret}입니다.`);
         break;
     }else{
