@@ -6,12 +6,32 @@ let correctCount = 0;
 let wrongCount = 0;
 
 while(true){
+
     //랜덤 정수 2개를 생성
     let firstNumber = Math.floor(Math.random()*20)+1;
     let secondNumber = Math.floor(Math.random()*20)+1;
     
+    //연산자를 만들 랜덤 정수 생성
+    let markNum = Math.floor(Math.random*3)+1
+    let mark;
+
+    //실제 정답
+    let realAnswer;
+    if(markNum===0){
+        mark='+';
+        realAnswer = firstNumber + secondNumber;
+    }
+    else if(markNum===1){
+        mark='-';
+        realAnswer = firstNumber - secondNumber;
+    }
+    else{
+        mark='*';
+        realAnswer = firstNumber * secondNumber;
+    }
+    
     //사용자 입력값
-    let userAnswer = +prompt(`Q${qNum++}. ${firstNumber}+${secondNumber}=??`);
+    let userAnswer = +prompt(`Q${qNum++}. ${firstNumber} ${mark} ${secondNumber}=??`);
     
     if(userAnswer===0){
         alert('게임 종료!');
@@ -19,7 +39,7 @@ while(true){
     }
 
     //정답확인
-    if(userAnswer === firstNumber+secondNumber){
+    if(userAnswer === realAnswer){
         alert(`정답!`); 
         correctCount++;
     }else{ 
