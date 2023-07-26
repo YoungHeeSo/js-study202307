@@ -13,11 +13,17 @@
 
 //실제로 정답으로 사용할 랜덤정수 만들기
 let secret =  Math.floor(Math.random()*100)+1
+
+// 입력 최소, 최대값
 let min=1, max=100;
 
-console.log(secret);
+//초기 카운트 수
+let initCount=5;
+//카운트다운 변수
+let countDown = initCount;
 
 while(true){
+
     // 사용자의 정답 입력값
     let answer = +prompt(`숫자를 입력하세요. ${min}~${max}`);
 
@@ -27,11 +33,13 @@ while(true){
         alert(`범위 안에 값을 입력하세요.`);
         continue;
     }
-
+    
+    countDown--;
+    
     //업 다운 판단
     //정답인 경우
     if(secret===answer){
-        alert(`정답 입니다!`);
+        alert(`정답 입니다! ${initCount - countDown}번만에 맞췄습니다.`);
         break;
     }else if(secret > answer){
         alert(`UP!`);
@@ -40,7 +48,15 @@ while(true){
         alert(`DOWN!`);
         max=answer-1;
     }
-}
+
+    //추가 게임 종료 조건
+    if(countdown === 0){
+        alert(`틀렸어요 정답은 ${secret}입니다.`);
+    }else{
+        alert(`${countDown}번의 기회가 남았습니다`);
+    }
+
+} // end while loop
 alert(`게임 종료`);
 
 
