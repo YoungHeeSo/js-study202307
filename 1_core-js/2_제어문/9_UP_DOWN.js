@@ -11,40 +11,80 @@
 // 난이도는 상, 중, 하 난이도가 존재하며 
 // 난이도별 입력 횟수제한이 다르다.
 
-let rn = Math.floor(Math.random()*50)+1;
-let userNum;
-let count;
+//실제로 정답으로 사용할 랜덤정수 만들기
+let secret =  Math.floor(Math.random()*100)+1
+let min=1, max=100;
 
-let level = +prompt('1. 상(기회 3번) | 2. 중(기회 6번) | 3. 하(기회 10번)');
-
-if(level===1) count=3;
-else if(level===2) count=6;
-else count=10;
-
-userNum= +prompt(`1부터 50사이의 무작위 숫자를 ${count}번 안에 맞춰보세요`);
+console.log(secret);
 
 while(true){
-    if(userNum>=1||userNum<=50 ){
-        if(rn !== userNum){
-            count--;
-            if(rn>=userNum) {
-                userNum= +prompt(`UP! 
-                기회가 ${count}번 남았습니다.`);  
-            }
-            else userNum= +prompt(`DOWN! 
-            기회가 ${count}번 남았습니다.`);
-        }
-        else if(userNum == rn){
-            alert(`딩동댕 정답은 ${rn}입니다~`);
-            break;
-        }
-        if(count===0){
-            alert(`기회를 모두 소진했습니다. GAME OVER!!`)
-            break;
-        }
-    } 
-    if(userNum>50 || userNum<0){
-        alert('범위 안에 숫자를 입력해주세요.');
+    // 사용자의 정답 입력값
+    let answer = +prompt(`숫자를 입력하세요. ${min}~${max}`);
+
+    //입력값 유효성 검사
+    //지금 입력 범위 안의 값인가를 검사
+    if(answer<min || answer>max){
+        alert(`범위 안에 값을 입력하세요.`);
         continue;
-    }    
+    }
+
+    //업 다운 판단
+    //정답인 경우
+    if(secret===answer){
+        alert(`정답 입니다!`);
+        break;
+    }else if(secret > answer){
+        alert(`UP!`);
+        min=answer+1;
+    }else {
+        alert(`DOWN!`);
+        max=answer-1;
+    }
 }
+alert(`게임 종료`);
+
+
+
+
+
+
+
+
+
+// let rn = Math.floor(Math.random()*50)+1;
+// let userNum;
+// let count;
+
+// let level = +prompt('1. 상(기회 3번) | 2. 중(기회 6번) | 3. 하(기회 10번)');
+
+// if(level===1) count=3;
+// else if(level===2) count=6;
+// else count=10;
+
+// userNum= +prompt(`1부터 50사이의 무작위 숫자를 ${count}번 안에 맞춰보세요`);
+
+// while(true){
+//     if(userNum>=1||userNum<=50 ){
+//         if(rn !== userNum){
+//             count--;
+//             if(rn>=userNum) {
+//                 userNum= +prompt(`UP! 
+//                 기회가 ${count}번 남았습니다.`);  
+//             }
+//             else userNum= +prompt(`DOWN! 
+//             기회가 ${count}번 남았습니다.`);
+//         }
+//         else if(userNum == rn){
+//             alert(`딩동댕 정답은 ${rn}입니다~`);
+//             break;
+//         }
+//         if(count===0){
+//             alert(`기회를 모두 소진했습니다. GAME OVER!!`)
+//             break;
+//         }
+//     } 
+//     if(userNum>50 || userNum<0){
+//         alert('범위 안에 숫자를 입력해주세요.');
+//         continue;
+//     }    
+// }
