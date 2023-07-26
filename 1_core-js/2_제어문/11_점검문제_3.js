@@ -5,11 +5,34 @@ let qNum=1; //문제 넘버링
 let correctCount = 0;
 let wrongCount = 0;
 
+let maxNumber;
+
+while(true){
+
+    let message = `~~~~~~~~ 난이도를 설정합니다 ~~~~~~~~~~~~
+    [1. 상 (1~100) | 2. 중 (1~50) | 3. 하 (1~20) ]`;
+    let level = +prompt(message);
+
+    if(level===1){
+        maxNumber=100;
+    }
+    else if(level===2){
+        maxNumber=50;
+    }
+    else if(level===3){
+        maxNumber=20;
+    }else {
+        alert(`난이도를 숫자로 다시 입력하세요!`);
+        continue;
+    }
+    break;
+}
+
 while(true){
 
     //랜덤 정수 2개를 생성
-    let firstNumber = Math.floor(Math.random()*20)+1;
-    let secondNumber = Math.floor(Math.random()*20)+1;
+    let firstNumber = Math.floor(Math.random()*maxNumber)+1;
+    let secondNumber = Math.floor(Math.random()*maxNumber)+1;
     
     //연산자를 만들 랜덤 정수 생성
     let markNum = Math.floor(Math.random*3)+1
@@ -17,11 +40,18 @@ while(true){
 
     //실제 정답
     let realAnswer;
+    
     if(markNum===0){
         mark='+';
         realAnswer = firstNumber + secondNumber;
     }
     else if(markNum===1){
+        if(firstNumber === secondNumber) continue;
+        else if(firstNumber<secondNumber){
+            let t = firstNumber;
+            firstNumber = secondNumber;
+            secondNumber = t;
+        }
         mark='-';
         realAnswer = firstNumber - secondNumber;
     }
