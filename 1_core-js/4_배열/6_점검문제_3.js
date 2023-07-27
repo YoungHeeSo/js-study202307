@@ -19,14 +19,40 @@ while(true){
 
   tryMember = prompt(`멤버: [${member}]\n수정할 멤버 이름을 입력해주세요.`);
   let index = member.indexOf(tryMember);  
-
-  if(tryMember!==member[index]){
+  
+  if(tryMember==='-1'){
+    alert('프로그램을 종료합니다');
+    break;
+  }
+  else if(tryMember!==member[index]){
     alert(`${tryMember}는 잘못된 이름입니다.`);
   }  
 
-  if(tryMember===member[index]){
+  else if(tryMember===member[index]){
     newMember = prompt(`새로 추가할 멤버 이름을 입력해주세요.`);
     let newNum = member.splice(index, 1, newMember);
   }
+
   
 }
+
+//풀이
+// let tvxq = ["유노윤호", "최강창민", "영웅재중", "믹키유천", "시아준수"];
+
+// let updateTarget = prompt(
+//   `현재 멤버: [${tvxq}]\n수정할 멤버의 이름을 입력하세요!`
+// );
+
+// // delTarget을 수정
+// if (tvxq.includes(delTarget)) {
+//   // 수정 진행
+//   // 새로운 이름을 입력받아야 함
+//   let newName = prompt(`새로운 이름을 입력해주세요!`);
+//   let index = tvxq.indexOf(updateTarget);
+  
+//   tvxq[index] = newName;
+
+//   alert(`수정 완료!\n현재 멤버: [${tvxq}]`);
+// } else {
+//   alert(`${updateTarget}은(는) 잘못된 이름입니다.\n다시 입력하세요!`);
+// }
