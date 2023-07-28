@@ -7,8 +7,11 @@ Q. n의 약수의 개수를 구하기
  나누어 떨어졌을 시 약수의 개수 카운트를 1증가시키고 출력.
 */
 
+//약수를 저장할 배열
 let divisor = [];
-let count=0;
+
+//약수의 개수가 저장되는 변수
+// let count=0;
 
 function calcDivisor(number) {
 
@@ -16,17 +19,18 @@ function calcDivisor(number) {
 
         if(number%i===0){
             divisor.push(i);
-            count++;
+            // count++;
         }
         else continue;
     }
     
     console.log(`${number}의 약수: ${divisor}`);
 
-    return count;
+    // return count;
+    return divisor.length; //약수의 개수를 저장하는 변수를 만들지 않고 배열의 길이를 세어 반환한다
 }
 
 // 호출부
-let divCount = calcDivisor(20);
+let divCount = calcDivisor(50);
 console.log(`약수의 개수: ${divCount}개`);
 

@@ -11,7 +11,7 @@
 */
 
 function calcBMI(h, w) {
-    let bmi = w/((h*0.01)**2);
+    let bmi = w/((h/100)**2);
 
     if(bmi>=25.0){
         console.log(`당신은 과체중입니다`);
@@ -26,11 +26,13 @@ function calcBMI(h, w) {
     return bmi;
 }
 
-function round(bmi, prime){
+function round(bmi, prime){ //bmi와 자릿수
     return Math.round(bmi*(10**prime))/(10**prime);
+    // return bmi.toFixed(prime); //자릿수를 구하는 또다른 방법
 }
 
 let h = 178.4, w = 78.2;
 let myBmi = calcBMI(h, w);
 
 console.log(`키 -> ${h}cm, 체중 -> ${w}kg의 체질량지수는 ${round(myBmi, 2)}입니다.`);
+console.log(myBmi);
