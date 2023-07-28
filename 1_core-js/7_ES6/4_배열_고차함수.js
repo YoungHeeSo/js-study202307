@@ -29,7 +29,7 @@ const userList = [{
 ];
 
 //배열 고차함수
-//forEach(함수): 배열의 요소를 반복하면서 하나씩 소바
+//forEach(함수): 배열의 요소를 반복하면서 하나씩 소비
 
 userList.forEach(user=>{
     console.log(`제 이름은 ${user.userName}이구요~ ${user.address}에 살아요!`);
@@ -106,16 +106,16 @@ const appleBasket = [{
 ];
 
 console.log(appleBasket.length);
-//사과중에 녹색이면서 당도가 9이상인 사과만 선별에서
-//이 사과는 xxx색이며 당도는 xxx입니다.
-//라는 문자열에 매핑되어 있는 배열을 리턴해주세요!!!
-const filteredApples=appleBasket
-.filter(apple => apple.color==='green'&& apple.sweet>=9);
 
-const mappedapples = filteredApples
-    .filter(apple => apple.color==='green'&& apple.sweet>=9)
-    .map(apple => `이 사과는 ${apple.color}색 이며 당도는 ${apple.sweet}입니다`)
-    .forEach(a=>console.log(a));
+// 사과중에 녹색이면서 당도가 9이상인 사과만 선별해서
+// 이 사과는 xxx색이며 당도는 xxx입니다.
+// 라는 문자열이 매핑되어 있는 배열을 리턴해주세요.
+const filteredApples = appleBasket
+.filter(apple => apple.color === 'green' && apple.sweet >= 9)
+.map(apple => `이 사과는 ${apple.color}색이며 당도는 ${apple.sweet}입니다.`)
+.forEach(a => console.log(a));
+
+
 
 // 회원목록에서 서울에 사는 회원들의 
 //두번째 취미만 배열에 모아서 
@@ -129,9 +129,5 @@ userList //[{5},{5},{5},{5}]
         secondHobby: usr.hobbys[1]
     };    
 }) //[{2},{2},{2}] {name, hobby}
-.forEach(hobby=>console.log(`${u.name}회원의 2번째 취미는 ${u.secondHobby}입니다`));
-
-
-
-
+.forEach(u=>console.log(`${u.name}회원의 2번째 취미는 ${u.secondHobby}입니다`));
 
