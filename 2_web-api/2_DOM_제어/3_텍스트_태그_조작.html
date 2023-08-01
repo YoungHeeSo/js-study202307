@@ -11,7 +11,7 @@
     </style>
 </head>
 <body>
-    <div class="greet">
+    <div id="greet">
         Hello <span class="hilight">World!</span>
     </div>
 
@@ -24,8 +24,7 @@
     <script>
         const $greet = document.getElementById('greet');
 
-        console.log($greet.textContent.trim());
-        // 앞뒤 공백 제거 함수 trim()
+        console.log($greet.textContent.trim()); // 앞뒤 공백 제거 함수 trim()
         console.log($greet.innerHTML);
 
         $greet.firstElementChild.textContent = 'javascript';
@@ -41,7 +40,7 @@
         $foods.innerHTML += '<li class="food">족발</li>';
 
         //자식태그 전체삭제
-        $foods.innerHTML='';
+        // $foods.innerHTML='';
     </script>
 </body>
 </html>
