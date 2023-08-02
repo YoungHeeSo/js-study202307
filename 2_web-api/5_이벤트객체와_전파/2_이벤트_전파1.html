@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #fruits{
+            padding: 3rem; border: 0.125rem solid red;
+        }
+        #fruits li{
+            background: yellow; margin-bottom: 0.7rem;
+        }
+        #fruits li:last-child{
+            position: absolute;
+            bottom: 10%; right: 5%;
+        }
+
+    </style>
+</head>
+<body>
+    <ul id="fruits">
+        <li class="apple">apple</li>
+        <li class="banana">banana</li>
+        <li class="grape">grape</li>
+    </ul>
+
+    <script>
+        const $fruits = document.getElementById('fruits');
+        const $apple = $fruits.firstElementChild;
+        $fruits.addEventListener('click', e=>{
+            console.log('ul#fruits 클릭 이벤트 발생');
+        });
+        $apple.addEventListener('click', e=>{
+            console.log('li.apple의 클릭 이벤트 발생');
+        });
+        //버블링> 부모의 이벤트가 자식에게 전염되어 발생할 수 있다
+    </script>
+</body>
+</html>

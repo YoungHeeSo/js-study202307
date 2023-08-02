@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <p>아ㅁ무 곳이나 클리갛세요</p>
+    <em class="msg"></em>
+    <script>
+        const documentclickHandler=(event)=>{
+            console.log('아무데나클릭해슴');
+            console.log(event);
+            const $em = document.querySelector('.msg');
+            $em.textContent=`좌표(${event.x}. ${event.y})`;
+        }
+        document.addEventListener('click', documentclickHandler);
+        document.addEventListener('keydown', documentclickHandler);
+    </script>
+</body>
+</html>
