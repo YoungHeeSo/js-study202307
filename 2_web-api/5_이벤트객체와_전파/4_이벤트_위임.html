@@ -53,7 +53,7 @@
         
         // const $fruitList = document.getElementById('fruits');
         const $fruits = document.querySelector('#fruits');        
-        const $fruitItem=[$apple, $banana, $grape]=[...$fruits.children];
+        const $fruitItem=[...$fruits.children];
         
         //나머지 태그에 active를 제거하는 함수
         const removeActive=()=>{
@@ -91,21 +91,55 @@
             이런 형태로 생성되어 ul의 끝자식으로
             추가되어야 한다.
         */
-        const $add = document.getElementById('add');
-        const $textInput= document.querySelector('input');
 
-        $add.addEventListener('click', e=>{
-            console.log(typeof $textInput.value);
-            
+       const $addBtn = document.getElementById('add');
+       const $textInput = document.querySelector('.text-box');
+
+       const addFruitHandler = e =>{
+            //input에 있는 과일명을 읽어들임.
+            console.log(e.target);
+            const text = $textInput.value;
+            console.log(text);
+
+            //li태그 생성
             const $newLi = document.createElement('li');
-            $newLi.textContent=$textInput.value;
-            $newLi.setAttribute('id', $textInput.value);
+            $newLi.textContent=text;
+            $newLi.setAttribute('id', text.toLowerCase());
+
+            //ul에 추가
             $fruits.appendChild($newLi);
-            // $fruitItem.appendChild($fruits);
+            //배열에도 추가
+            $fruitItem.push($newLi);
+            $textInput.value='';
+            //appendChild == append, 
+            //구형 브라우저는 지원이 안될 수 있어서, appendChild 사용
 
-            console.log($newLi);
+       };
 
-        });
+       const addFruitByEnterHandler = e =>{
+            if(e.key === 'Enter'){
+                $addBtn.click(); //프로그래밍적으로 클릭명력
+            }
+       };
+
+        $addBtn.addEventListener('click', addFruitHandler);
+        $textInput.addEventListener('keyup', addFruitByEnterHandler);
+
+        // const $add = document.getElementById('add');
+        // const $textInput= document.querySelector('input');
+
+        // $add.addEventListener('click', e=>{
+        //     console.log(typeof $textInput.value);
+            
+        //     const $newLi = document.createElement('li');
+        //     $newLi.textContent=$textInput.value;
+        //     $newLi.setAttribute('id', $textInput.value);
+        //     $fruits.appendChild($newLi);
+        //     // $fruitItem.appendChild($fruits);
+
+        //     console.log($newLi);
+
+        // });
 
     </script>
 
