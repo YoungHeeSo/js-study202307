@@ -65,6 +65,7 @@ const closedeletModal=()=>{
 
 let movieId;
 let deleteMoviePosition;
+
 //화면에 새로운 영화 정보를 렌더링하는 함수
 const rendernewMovie=({id, title, image, rating})=>{
         
@@ -80,70 +81,70 @@ const rendernewMovie=({id, title, image, rating})=>{
           <h2>${title}</h2>
           <p>${rating} / 5</p>
         </div>`;
-
-        //삭제 클릭 이벤트
-        // $newMovie.addEventListener('click', deleteMovieHandler);
+        
         //삭제 모달을 여는 핸들러
         const oftendeletModalHandler=e=>{
+
             oftendeletModal();
             deleteMoviePosition=e.target.closest('.movie-element');
+
             movieId = e.target.closest('.movie-element').dataset.movieId;
             console.log(movieId);
         };
-        $newMovie.addEventListener('click', oftendeletModalHandler);    
         
-
-
+        $newMovie.addEventListener('click', oftendeletModalHandler);  
+        
         //삭제를 진행하는 핸들러
         const deleteMovieHandler = e =>{
+            
+            //배열에서도 영화 정보를 지워야함
+            //클릭한 태그의 근처 li의 movie-id값 가져오기
+            // let movieId = e.target.closest('.movie-element').dataset.movieId;
+            // const movieId = e.dataset.movieId;
+
             console.log(movieId);
-
-        //배열에서도 영화 정보를 지워야함
-        //클릭한 태그의 근처 li의 movie-id값 가져오기
-        // let movieId = e.target.closest('.movie-element').dataset.movieId;
-        // const movieId = e.dataset.movieId;
-
-        
-
-        //배열에서 해당 아이디값을 가지는 객체를 찾아내고, 인덱스 알아내기
-        // let index=-1;
-        // for(let i=0; i<movies.length; i++){
-        //     if(movies[i].id === movieId){
-        //         index =i;
-        //         break;
-        //     }
-        // }
-
-        //대상의 인덱스 찾기
-        //중요!!!
-        //indexof: 원시타입 (숫자, 문자열)만 찾을 수 있어, 객체는 못찾음
-        //findIndex: 배열 고차함수, 반복문을 돌려서 처리해준다
-        const index= movies.findIndex(m=>m.id===movieId);
-        console.log(index);
-        
-        //그 객체를 배열에서 지우기 < 인덱스를 알아야 지울 수 있음
-        movies.splice(index, 1);
-
-        //실제 li지우기
-        deleteMoviePosition.remove();
-
-        //삭제모달 닫기
-        closedeletModal();
-    };
-    
-    
-    $movieList.appendChild($newMovie);
-
-    //delet Movie모달 yes버튼 클릭 이벤트
-    $deletMovieButton.addEventListener('click', deleteMovieHandler);       
-    
-};
-
-//영화 정보 입력란 검증
-const validateMovieinput=({title, image, rating})=>{
-    if(
-        title.trim()==='' ||
-        image.trim()===''||
+            
+            //배열에서 해당 아이디값을 가지는 객체를 찾아내고, 인덱스 알아내기
+            // let index=-1;
+            // for(let i=0; i<movies.length; i++){
+                //     if(movies[i].id === movieId){
+                    //         index =i;
+                    //         break;
+                    //     }
+                    // }
+                    
+                    //대상의 인덱스 찾기
+                    //중요!!!
+                    //indexof: 원시타입 (숫자, 문자열)만 찾을 수 있어, 객체는 못찾음
+                    //findIndex: 배열 고차함수, 반복문을 돌려서 처리해준다
+                    const index= movies.findIndex(m=>m.id===movieId);
+                    console.log(index);
+                    
+                    //그 객체를 배열에서 지우기 < 인덱스를 알아야 지울 수 있음
+                    movies.splice(index, 1);
+                    
+                    //실제 li지우기
+                    deleteMoviePosition.remove();
+                    
+                    //삭제모달 닫기
+                    closedeletModal();
+                };
+                
+                //삭제 클릭 이벤트
+                // $newMovie.addEventListener('click', deleteMovieHandler);
+                
+                $movieList.appendChild($newMovie);
+                
+                //delet Movie모달 yes버튼 클릭 이벤트
+                $deletMovieButton.addEventListener('click', deleteMovieHandler);       
+                
+            };
+            
+            //영화 정보 입력란 검증
+            const validateMovieinput=({title, image, rating})=>{
+                if(
+                    title.trim()==='' ||
+                    image.trim()===''||
         rating.trim()===''||
         +rating < 1 || +rating > 5){
         return false;
@@ -182,39 +183,6 @@ const addMovieHandler = e => {
     // 화면에 입력한 영화정보 렌더링하기
     rendernewMovie(newMovie);
 };
-  
-
-// //영화 추가버튼 기능을 수행하는 핸들러
-// const addMovieHandler=e=>{
-//     const titleValue = $titleInput.value; //제목입력값
-//     const imgUrlValue = $imgUrlInput.value; //이미지경로
-//     const ratingValue = $ratingInput.value; // 평점입력값
-    
-//     //객체로 묶기
-//     const newMovie={
-//         id: Math.random().toString(),
-//         title: titleValue,
-//         image: imgUrlValue,
-//         rating: ratingValue
-//     };
-
-//     //검증
-//     if(!validateMovieinput(newMovie)){
-//         alert('입력값이 유효하지 않습니다');
-//         return;
-//     }
-
-//     // console.log(newMovie);
-//     movies.push(newMovie);
-//     console.log(movies);
-    
-//     //모달 닫기
-//     closeAddModal();
-
-//     //화면에 입력한 영화정보 렌더링하기
-//     rendernewMovie(newMovie);
-
-// };
 
 //영화 추가 모달창을 띄우는 핸들러
 const showMovieModalHandler =e =>{
@@ -246,7 +214,6 @@ $confirmAddMovieButton.addEventListener('click', addMovieHandler);
 
 //delet Movie모달 취소 버튼 클릭 이벤트
 $closedeletButton.addEventListener('click', closedeletModal);
-// $deletMovieButton.addEventListener('click', closedeletModal);
 
 
 
