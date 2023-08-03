@@ -10,6 +10,7 @@
   </head>
   <body>
     <div id="backdrop"></div>
+
     <div class="modal" id="add-modal">
       <div class="modal__content">
         <label for="title">영화 제목</label>
@@ -26,17 +27,19 @@
           id="rating"
         />
       </div>
+
       <div class="modal__actions">
         <button class="btn btn--passive">취소</button>
         <button class="btn btn--success">추가</button>
       </div>
     </div>
-
+    
     <div class="modal" id="delete-modal">
       <h2 class="modal__title">진짜 삭제합니까?</h2>
       <p class="modal__content">
         정말 이 항목을 삭제합니까? 삭제하면 되돌릴 수 없습니다.
       </p>
+      
       <div class="modal__actions">
         <button class="btn btn--passive">No (Cancel)</button>
         <button class="btn btn--danger">Yes</button>
@@ -52,14 +55,20 @@
       <section id="entry-text" class="card">
         <p>나의 개인 저장공간~</p>
       </section>
-      <ul id="movie-list">
-        <li class="movie-element">
-          <div class="movie-element__image">
-            <img src="" alt="">
-          </div>
-          <div class="movie-element__info"></div>
-        </li>
-      </ul>
+
+      <ul id="movie-list"></ul>
+
     </main>
+
+    <!-- <li class="movie-element">
+        <div class="movie-element__image">
+          <img src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000084/84949/84949197480_727.jpg" alt="">
+        </div>
+        <div class="movie-element__info">
+          <h2>스파이더맨</h2>
+          <p>5 / 5</p>
+        </div>
+      </li> -->
+
   </body>
 </html>
