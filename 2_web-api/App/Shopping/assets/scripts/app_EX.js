@@ -41,6 +41,7 @@ class ShoppingCart{
     `;
     return ;
     };
+    
 }
 
 // 한개의 LI태그를 생성하는 컴포넌트 클래스 설계
