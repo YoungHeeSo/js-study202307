@@ -37,6 +37,15 @@ const movies=[];
 
 //유틸함수, 일반함수 정의 //
 
+//section을 조건부로 렌더링하는 함수
+const updateUI =()=>{
+    if(movies.length>0){
+        $entryTextSection.style.display='none';
+    }else{        
+        $entryTextSection.style.display='block';
+    }
+}
+
 //모든 인풋을 리셋하는 함수
 const clearMovieModalInput=()=>{
     $userInputs.forEach($input=>$input.value='');
@@ -87,7 +96,6 @@ const rendernewMovie=({id, title, image, rating})=>{
 
             oftendeletModal();
             deleteMoviePosition=e.target.closest('.movie-element');
-
             movieId = e.target.closest('.movie-element').dataset.movieId;
             console.log(movieId);
         };
@@ -179,9 +187,10 @@ const addMovieHandler = e => {
     console.log(movies);
   
     // 모달 닫기
-    closeAddModal();
+    closeModal();
     // 화면에 입력한 영화정보 렌더링하기
     rendernewMovie(newMovie);
+    updateUI();
 };
 
 //영화 추가 모달창을 띄우는 핸들러
@@ -192,12 +201,12 @@ const showMovieModalHandler =e =>{
 
 //백드롭 영역을 클릭하면 모달이 닫히는 핸들러
 const backdropHandler =e=>{
-    closeAddModal();
+    closeModal();
 };
 
 //영화추가 모달창의 취소버튼이 누르면 모달이 닫히는 핸들러
 const closeMoiveModalHandler=e=>{
-    closeAddModal();
+    closeModal();
 };
 
 //Add movie버튼 클릭 이벤트
