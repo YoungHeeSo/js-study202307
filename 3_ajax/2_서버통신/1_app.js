@@ -18,7 +18,7 @@ HTTP method
 */
 
 //요청 정보 초기화(초기값 세팅)
-xhr.open('GET', 'https://jsonplaceholder.typicode.com/posts');
+xhr.open('GET', 'http://localhost:5000/posts');
 
 //요청 보내기
 xhr.send();
