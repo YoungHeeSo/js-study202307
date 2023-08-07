@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="fruits">
+        <li>사과</li>
+        <li>바나나</li>
+        <li>포도</li>
+    </ul>
+
+    <script>
+        const $fruits = document.getElementById('fruits');
+        const [$apple, $banana, $grape] = [...$fruits.children];
+
+        const $newLi = document.createElement('li');
+        $newLi.textContent = '망고';
+
+        //중간삽입
+        // $fruits.insertBefore($newLi, $grape);
+        // $fruits.insertBefore($newLi, $fruits.firstElementChild); 
+        $fruits.insertBefore($newLi, document.querySelector('li:nth-child(2)'));
+
+        //노드 이동
+        $fruits.appendChild($apple); //기존 항목에 있다면 이동함
+        $fruits.insertBefore($newLi, $grape); 
+    </script>
+
+
+</body>
+</html>
