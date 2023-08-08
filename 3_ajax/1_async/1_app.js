@@ -1,9 +1,3 @@
-//defer
-//비동기 코드
-//
-
-
-
 
 const $btn = document.querySelector('button');
 

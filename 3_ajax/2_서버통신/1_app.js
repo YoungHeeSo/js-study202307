@@ -40,12 +40,16 @@ const fetchGetPosts = ()=>{
         const postList = JSON.parse(xhr.response);
         // console.log(postList[0]);
     
-        postList.forEach(post => {
+        postList.forEach(({id, title, body}) => {
             const $postLi = document.createElement('li');
             $postLi.classList.add('post-item');
+
+            // li태그에 식별 아이디를 부여
+            $postLi.dataset.postId=id;
+
             $postLi.innerHTML=`
-            <h2>${post.title}</h2>
-            <p>${post.body}</p>
+            <h2>${title}</h2>
+            <p>${body}</p>
             <button>DELETE</button>`;
     
             $postUl.appendChild($postLi);
@@ -84,16 +88,49 @@ const fetchNewPosts=(e)=>{
 //form태그에 전송이벤트 등록
 $addForm.addEventListener('submit', fetchNewPosts);
 
-document.getElementById('go-link').addEventListener('click', e=>{
-    const flag = confirm('진짜 이동합니까?');
-    if(!flag){
-        console.log('안돼');
-        e.preventDefault() //태그의 기본 기능을 없앰.
-        //기본기능: a -> 링크이동 기능
-        //        checkbox -> 체크기능
-        //        form -> 서버에 데이터를 주면서 새로고침 
+//서버에 삭제요청을 보내는 함수
+const fetchDelete=(id)=>{
+    const xhr = new XMLHttpRequest();
+    xhr.open('DELETE', `http://localhost:5000/posts/${id}`);
+
+    xhr.send();
+    
+    //응답처리
+    xhr.onload=()=>{
+        if(xhr.status===200){
+            alert('성공');
+        }else{
+            alert('실패');
+        }
     }
-});
+}
+
+//삭제클릭하면 벌어지는 일들에 대한 함수
+const deletePostHandler= e =>{
+    //if(e.target.querySelector('li') !== e.target)
+    if(!e.target.matches('button')) return;
+
+    // 삭제 클릭 대상 아이디 잡아오기
+    console.log('삭제 클릭');
+    const id = e.target.closest('.post-item').dataset.postId;
+    fetchDelete(id);
+    
+}
+
+//삭제 이벤트 등록
+$postUl.addEventListener('click', deletePostHandler);
+
+
+// document.getElementById('go-link').addEventListener('click', e=>{
+//     const flag = confirm('진짜 이동합니까?');
+//     if(!flag){
+//         console.log('안돼');
+//         e.preventDefault(); //태그의 기본 기능을 없앰.
+//         //기본기능: a -> 링크이동 기능
+//         //        checkbox -> 체크기능
+//         //        form -> 서버에 데이터를 주면서 새로고침 
+//     }
+// });
 
 
 

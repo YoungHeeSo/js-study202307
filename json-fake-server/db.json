@@ -1,21 +1,5 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "냠냠냠 접접접",
-      "body": "zzzzzyyyyyyyxxxxxxxxxabcdefghijklnmopqrstuvw"
-    },
-    {
-      "id": 2,
-      "title": "루루디 라리루",
-      "body": "두룹두바밥바 디라디라 디로로"
-    },
-    {
-      "title": "yanghee",
-      "body": "hi there~\n",
-      "id": 3
-    }
-  ],
+  "posts": [],
   "users": [
     {
       "id": 1,
