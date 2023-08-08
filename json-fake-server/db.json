@@ -1,5 +1,21 @@
 {
-  "posts": [],
+  "posts": [
+    {
+      "title": "hi",
+      "body": "hello",
+      "id": 1
+    },
+    {
+      "title": "i love you",
+      "body": "you love me",
+      "id": 2
+    },
+    {
+      "title": "오늘 뭐 먹지",
+      "body": "치킨.",
+      "id": 3
+    }
+  ],
   "users": [
     {
       "id": 1,
@@ -16,5 +32,6 @@
       "account": "abc1234",
       "userName": "박철두"
     }
-  ]
+  ],
+  "followers":[]
 }
