@@ -31,7 +31,8 @@
                 console.log(postList);
                 postList.forEach(post=>{
                     document.write(post.title+'<br>');
-            })
+                });
+            });
 
             // fetchGet('http://localhost:5000/posts')
             // .then(postList=>{
@@ -41,7 +42,7 @@
             //     });
             // });
 
-        });
+        };
 
         document.getElementById('btn').addEventListener('click', clickHandler);
     

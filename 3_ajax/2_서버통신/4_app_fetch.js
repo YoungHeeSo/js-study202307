@@ -16,12 +16,15 @@ fetch(URL)
     postList.forEach(({ id, title, body }) => {
       // 템플릿태그에서 li태그를 추출
       const $postLi = document.importNode($postTemplate.content, true);
-      // console.log($postLi);
+
       $postLi.querySelector("li").dataset.postId = id;
       $postLi.querySelector("h2").textContent = title;
       $postLi.querySelector("p").textContent = body;
 
       $postUl.appendChild($postLi);
+
+      console.log($postLi);
+      console.log(id, title);
     });
   });
 
