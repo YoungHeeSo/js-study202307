@@ -1,11 +1,6 @@
 {
   "posts": [
     {
-      "title": "hi",
-      "body": "hello",
-      "id": 1
-    },
-    {
       "title": "i love you",
       "body": "you love me",
       "id": 2
@@ -33,5 +28,5 @@
       "userName": "박철두"
     }
   ],
-  "followers":[]
+  "followers": []
 }
