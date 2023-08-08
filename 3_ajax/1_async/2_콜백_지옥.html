@@ -26,20 +26,22 @@
             } else {
                 console.error(`${xhr.status} ${xhr.statusText}`);
             }
-        }
+        };
     };
 
 
     //개시물 목록을 취득
     const posts= get('http://localhost:5000/posts');
 
-    //두번째 게시물의 글슨이 정보를 가져옴
-    const writerId=posts[1].userId;
+    //두번째 게시물의 글쓴이 정보를 가져옴
+    const writerId = posts[1].userId;
+    console.log(posts);
     //게시물 글쓴이 정보 서버에 요청
     get('http://localhost:5000/users/'+writerId);
 
     //문제점> get함수는 비동기 함수
     //순서가 있는 코드인데 비동기함수로 인해 같이 실행됨
+
 
 </script>
 </body>
