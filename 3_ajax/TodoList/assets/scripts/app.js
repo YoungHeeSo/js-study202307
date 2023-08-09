@@ -4,14 +4,6 @@ const URL = 'http://localhost:5000/todos';
 const $todoList = document.querySelector('.todo-list');
 
 // 할 일 목록 렌더링 - db.json에 있는 todos를 get요청으로 fetch해서 가져와서 렌더링
-
-// 새로운 할 일 추가 - 할 일을 쓰고 더하기 누르면 post요청으로 db.json에 객체 추가, 렌더링
-
-// 할 일 삭제 - 삭제 버튼을 누르면 delete요청으로 db.json에서 객체 제거, 렌더링
-// 할 일 체크 기능 - 체크박스를 누르면 put, patch요청으로 db.json에 done값을 반대값으로 수정,changeEvent걸기
-// 할 일 수정 기능 - 초록색버튼을 누르면 수정모드로 진입(인풋창 활성화)
-// 인풋창에 새로운 텍스트를 쓰고 확인을 누르면 put,patch요청이 나가고 db.json에서도 수정
-
 //db.json에 있는 todos를 화면에 렌더링하기
 const fetchTodos=(url, method='GET', payload=null)=>{
 
@@ -49,6 +41,46 @@ const retherTodos = (todoList)=>{
         $todoList.appendChild($newLi);
     });
 };
+
+// 새로운 할 일 추가 - 할 일을 쓰고 더하기 누르면 post요청으로 db.json에 객체 추가, 렌더링
+const addtodoHandler=e=>{
+    //클릭 이벤트 확인
+    // console.log('클클릭');
+    
+    //클릭하면 input text를 읽어야 해
+    const $textInput = document.getElementById('todo-text');
+    // console.log($textInput);
+
+    //input안에 text 꺼내기
+    const inputText= $textInput.value;
+    // console.log(inputText);
+
+    //서버에 데터 보내고 저장
+    //fetch기 필요해, 저장이므로 POST
+    //payload api스펙에 맞게 만들어
+    const payload={
+        text: inputText,
+        done: false
+    };
+
+    fetchTodos(URL, 'POST', payload)
+    .then(res=>{
+        if(res.status===200|| res.status===201){
+            console.log('등ㄹ록');
+        }else{
+            console.log('노등ㄹ록');
+        }
+    });   
+};
+
+//할 일 등록 기능
+const $addBtn=document.getElementById('add');
+$addBtn.addEventListener('click', addtodoHandler);
+
+// 할 일 삭제 - 삭제 버튼을 누르면 delete요청으로 db.json에서 객체 제거, 렌더링
+// 할 일 체크 기능 - 체크박스를 누르면 put, patch요청으로 db.json에 done값을 반대값으로 수정,changeEvent걸기
+// 할 일 수정 기능 - 초록색버튼을 누르면 수정모드로 진입(인풋창 활성화)
+// 인풋창에 새로운 텍스트를 쓰고 확인을 누르면 put,patch요청이 나가고 db.json에서도 수정
 
 // ============= 앱 실행 ================ 
 const init=()=>{
