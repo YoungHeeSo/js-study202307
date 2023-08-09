@@ -26,14 +26,24 @@
   "followers": [],
   "todos": [
     {
-      "id": 2,
-      "text": "뉴스 기사 보기",
-      "done": true
+      "text": "장보기",
+      "done": true,
+      "id": 4
     },
     {
-      "id": 3,
-      "text": "자바스크립트 공부하기",
-      "done": false
+      "text": "놀기",
+      "done": false,
+      "id": 5
+    },
+    {
+      "text": "밥먹기",
+      "done": false,
+      "id": 6
+    },
+    {
+      "text": "게임하기",
+      "done": false,
+      "id": 7
     }
   ]
 }
