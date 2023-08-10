@@ -1,24 +1,6 @@
 
 const URL = 'http://localhost:5000/todos';
 
-// 3. 헤더 일정관리 텍스트에   '  일정 관리 (3 / 6개 완료됨) '
-const $headtodo = document.querySelector('.app-title'); 
-
-fetch(URL)
-    .then(res=>res.json())
-    .then(list=>{
-        console.log(list);
-        let count=0;
-        list.forEach((tag)=>{
-            if(tag.done===true)
-                count++;
-
-            return count;
-        })
-        $headtodo.textContent+=`(${count}/${list.length} 완료됨)`;
-    });
-
-
 const $todoList = document.querySelector('.todo-list');
 
 // 할 일 목록 렌더링 - db.json에 있는 todos를 get요청으로 fetch해서 가져와서 렌더링
@@ -37,8 +19,43 @@ const fetchTodos=(url, method='GET', payload=null)=>{
      return fetch(url, requestInit);
 };
 
+// 3. 헤더 일정관리 텍스트에   '  일정 관리 (3 / 6개 완료됨) '
+// #1
+// const $headtodo = document.querySelector('.app-title'); 
+
+// fetch(URL)
+//     .then(res=>res.json())
+//     .then(list=>{
+//         console.log(list);
+//         let count=0;
+//         list.forEach((tag)=>{
+//             if(tag.done===true)
+//                 count++;
+
+//             return count;
+//         })
+//         $headtodo.textContent+=`(${count}/${list.length} 완료됨)`;
+//     });
+// #2
+const renderRestTodo = todoList => {
+    // 총 할 일 개수
+    const totalTodos = todoList.length;
+    // 완료된 할 일의 개수
+    const restTodos = todoList.filter(todo => todo.done).length;
+  
+    // 렌더링 처리
+    const $rest = document.querySelector('.rest-todo');
+    if (totalTodos > 0) {
+      $rest.textContent = `( ${restTodos} / ${totalTodos} )`;
+    }
+  };
+  
+
 //화면에 todos를 렌더링 하는 함수
 const retherTodos = (todoList)=>{
+    //할 일 완료 개수 렌더링
+    renderRestTodo(todoList);
+
     //li태그의 템플릿을 가져온다
     const $liTemplate = document.getElementById('single-todo');
 
@@ -74,6 +91,10 @@ const addTodoHandler=e=>{
     //    ( alert을 띄워도좋고, 모달을 띄워도 좋고, 스타일을 변경해도 좋음 )    
     if(inputText.trim()==='') {
         alert('빈칸!');
+
+        $textInput.style.background='red';
+        $textInput.setAttribute('placeholder', '공백은 안돼');
+
         return;
     }
 
@@ -95,21 +116,38 @@ const addTodoHandler=e=>{
     });   
 };
 
-const addTodoEnterHandler=e=>{
-    // 1. 할 일 입력 후 엔터쳐도 등록이 되도록… 구현
-    if(e.key==='Enter'){
-        $addBtn.click();        
-    }
-}
+
+// 1. 할 일 입력 후 엔터쳐도 등록이 되도록… 구현
+// const addTodoEnterHandler=e=>{
+//     if(e.key==='Enter'){
+//         $addBtn.click();        
+//     }
+// };
+
+//addinput enterkey
+// const $addInput = document.getElementById('todo-text');
+// $addInput.addEventListener('keydown', addTodoEnterHandler);
+
 
 //할 일 등록 기능
 //addBtn click
 const $addBtn=document.getElementById('add');
 $addBtn.addEventListener('click', addTodoHandler);
 
-//addinput enterkey
-const $addInput = document.getElementById('todo-text');
-$addInput.addEventListener('keydown', addTodoEnterHandler);
+
+// 엔터이벤트
+const $textInput = document.getElementById('todo-text');
+$textInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    $addBtn.click();
+  }
+});
+
+//form의 submit이벤트 중단시키자
+document.querySelector('.todo-insert').addEventListener('submit', e=>{
+    e.preventDefault();
+});
+
 
 
 

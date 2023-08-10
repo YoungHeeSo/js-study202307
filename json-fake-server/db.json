@@ -26,19 +26,24 @@
   "followers": [],
   "todos": [
     {
-      "text": "놀기",
-      "done": true,
-      "id": 5
+      "text": "뭐하고놀지고민하기",
+      "done": false,
+      "id": 9
     },
     {
-      "text": "게임하기",
+      "text": "오전 수업만 듣기",
       "done": false,
-      "id": 7
+      "id": 10
     },
     {
-      "text": "오전 수업 듣기",
+      "text": "할일3",
       "done": false,
-      "id": 8
+      "id": 11
+    },
+    {
+      "text": "할일5",
+      "done": false,
+      "id": 12
     }
   ]
 }
