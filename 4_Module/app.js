@@ -1,12 +1,11 @@
+import { $btn } from './getDOM.JS';
+import ABC, { clickHandler as ch } from './event.js';
 
-import {$btn} from './getDOM.js';
-import ABC, {clickHandler as ch} from './event';
+const init = () => {
+  $btn.style.background = 'aqua';
+  $btn.addEventListener('click', ch);
 
-const init=()=>{
-    $btn.style.background='aqus';
-    $btn.addEventListener('click', ch);
-
-    const dog = new ABC('초코', 3);
-    dog.info();
+  const dog = new ABC('초코', 3);
+  // dog.info();
 };
 init();
