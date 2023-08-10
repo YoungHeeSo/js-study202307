@@ -8,16 +8,14 @@ fetch(URL)
     .then(res=>res.json())
     .then(list=>{
         console.log(list);
+        let count=0;
         list.forEach((tag)=>{
-            let count=0;
             if(tag.done===true)
                 count++;
-            // console.log(tag.done);
 
             return count;
         })
         $headtodo.textContent+=`(${count}/${list.length} 완료됨)`;
-        // console.log(list.length);
     });
 
 
@@ -86,10 +84,6 @@ const addTodoHandler=e=>{
         text: inputText,
         done: false
     };
-    
-    // $headtodo.textContent='ㅎㅇ';
-    // $headtodo.textContent=`${Object.keys(todos).length}개 완료됨)`
-    // alert(`${$headtodo.textContent} (${0}/${Object.keys(todos).length}개 완료됨)`);
 
     fetchTodos(URL, 'POST', payload)
     .then(res=>{
