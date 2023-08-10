@@ -20,6 +20,7 @@ const fetchTodos=(url, method='GET', payload=null)=>{
 };
 
 // 3. 헤더 일정관리 텍스트에   '  일정 관리 (3 / 6개 완료됨) '
+
 // #1
 // const $headtodo = document.querySelector('.app-title'); 
 
@@ -36,6 +37,7 @@ const fetchTodos=(url, method='GET', payload=null)=>{
 //         })
 //         $headtodo.textContent+=`(${count}/${list.length} 완료됨)`;
 //     });
+
 // #2
 const renderRestTodo = todoList => {
     // 총 할 일 개수
@@ -76,6 +78,22 @@ const retherTodos = (todoList)=>{
     });
 };
 
+
+//async await//
+const inserTodo= async function(payload){
+
+    fetchTodos(URL, 'POST', payload);
+    
+    const res = await fetchTodos(URL, 'POST', payload);
+    
+    if(res.status===200|| res.status===201){
+        console.log('등ㄹ록');
+    }else{
+        console.log('노등ㄹ록');
+    }
+};
+
+
 // 새로운 할 일 추가 - 할 일을 쓰고 더하기 누르면 post요청으로 db.json에 객체 추가, 렌더링
 const addTodoHandler=e=>{
     //클릭 이벤트 확인
@@ -107,13 +125,15 @@ const addTodoHandler=e=>{
     };
 
     fetchTodos(URL, 'POST', payload)
-    .then(res=>{
-        if(res.status===200|| res.status===201){
-            console.log('등ㄹ록');
-        }else{
-            console.log('노등ㄹ록');
-        }
-    });   
+    .then(res => {
+      if (res.status === 200 || res.status === 201) {
+        console.log('등록 성공!');
+      } else {
+        console.log('등록 실패!');
+      }
+    });
+
+    // inserTodo(payload);
 };
 
 
@@ -186,9 +206,13 @@ const checkTodoHandler=e=>{
     console.log('이전 상태가 아닌 현재 상태의 체크', e.target.checked);
     
     const id = e.target.closest('.todo-list-item').dataset.id;
-    fetchTodos(`${URL}/${id}`,'PATCH',{
-        done: e.target.checked
-    });
+
+    (async ()=>{
+        const res = await fetchTodos(`${URL}/${id}`,'PATCH',{
+            done: e.target.checked
+        });
+    })();
+    
 };
 
 $todoList.addEventListener('change', checkTodoHandler);
