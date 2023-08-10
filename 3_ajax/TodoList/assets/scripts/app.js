@@ -79,13 +79,11 @@ const retherTodos = (todoList)=>{
 };
 
 
-//async await//
+//=========async await===========//
 const inserTodo= async function(payload){
 
-    fetchTodos(URL, 'POST', payload);
-    
-    const res = await fetchTodos(URL, 'POST', payload);
-    
+    fetchTodos(URL, 'POST', payload);    
+    const res = await fetchTodos(URL, 'POST', payload);    
     if(res.status===200|| res.status===201){
         console.log('등ㄹ록');
     }else{
@@ -109,7 +107,7 @@ const addTodoHandler=e=>{
     //    ( alert을 띄워도좋고, 모달을 띄워도 좋고, 스타일을 변경해도 좋음 )    
     if(inputText.trim()==='') {
         alert('빈칸!');
-
+        
         $textInput.style.background='red';
         $textInput.setAttribute('placeholder', '공백은 안돼');
 

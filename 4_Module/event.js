@@ -1,4 +1,3 @@
-/* eslint-disable require-jsdoc */
 // getDom.js에서 가져옴
 import { $p } from './getDOM.JS';
 
